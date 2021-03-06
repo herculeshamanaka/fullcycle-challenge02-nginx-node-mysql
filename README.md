@@ -5,7 +5,7 @@ Repo containing the challenge 02 from FullCycle 2.0 course (Code Education by Sc
 The challenge consists of:
 - Create a NodeJS app which insert a name on a MySQL table called "people" everytime it's accessed. Then display an h1 tag with "Full Cyle Rocks!" and all the names already inserted.
 - Use [nginx](https://www.nginx.com/) as a proxy to call the NodeJS app. The URL http://localhost:8080 must call the NodeJS app.
-- Create a docker-compose file to make it all happen.
+- Create a [Docker Compose](https://docs.docker.com/compose/compose-file/compose-file-v3/) file to make it all happen.
 
 ## 🤯 How it works
 There are 3 different containers:
@@ -16,7 +16,7 @@ There are 3 different containers:
 The `app` container is using [Dockerize](https://github.com/jwilder/dockerize) to wait the `db` container to be up and running. When a request to http://localhost:8080 is made, the `nginx` container will redirect to the `app` container on port 3000. Then the NodeJs app wil be executed. Data will be saved on the `db` container.
 
 ## ⚙️ Setting up [MySQL](https://www.mysql.com/)
-For the MySQL container there is a predefined SQL script to create the table called "people". It's located on the `init_file` folder. In the docker-compose file there are the following commands: 
+For the MySQL container there is a predefined SQL script to create the table called "people". It's located on the `init_file` folder. In the Docker Compose file there are the following commands: 
 ```
 ...
     volumes:
@@ -27,13 +27,13 @@ For the MySQL container there is a predefined SQL script to create the table cal
 The first command it's used to persist the data when the container is gone. The second command is used to create the table "people" if it does not exists. 
 
 ## ⚙️ Setting up [NodeJs](https://nodejs.org/en/)
-The NodeJs docker file contains the following instructions:
+The NodeJs [Dockerfile](https://docs.docker.com/engine/reference/builder/) contains the following instructions:
 - Copy the current directory to the container
 - Wait the MySQL container to be up and running
 - Install the NodeJs app dependecies
 
 ## ⚙️ Setting up [Nginx](https://www.nginx.com/)
-In the Dockefile for Nginx the default.conf file is removed and then replaced by a new config file. This config file has specific instructions to call the NodeJS app on port 3000. Pay attention to this line:
+In the [Dockerfile](https://docs.docker.com/engine/reference/builder/) for Nginx the default.conf file is removed and then replaced by a new config file. This config file has specific instructions to call the NodeJS app on port 3000. Pay attention to this line:
 ```
 ...
 proxy_pass http://app:3000
