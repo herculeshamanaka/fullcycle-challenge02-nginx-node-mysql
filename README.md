@@ -26,7 +26,7 @@ For the MySQL container there is a predefined SQL script to create the table cal
 ``` 
 The first command it's used to persist the data when the container is gone. The second command is used to create the table "people" if it does not exists. 
 
-## ⚙️ Setting up [NodeJs](https://nodejs.org/en/) <img src="https://nodejs.org/static/images/logo.svg" width="60" heigth="60" /> 
+## Setting up <a href="(https://nodejs.org/en/)" target="_blank"><img src="https://nodejs.org/static/images/logo.svg" width="60" heigth="60" /></a>
 The NodeJs [Dockerfile](https://docs.docker.com/engine/reference/builder/) contains the following instructions:
 - Copy the current directory to the container
 - Wait the MySQL container to be up and running
@@ -42,5 +42,5 @@ proxy_pass http://app:3000
 
 In this line Nginx will look for the container called `app` on port 3000.
 
-## ▶️ Running instructions
+## Running instructions ✅
 Clone this repository and then run `docker-compose up -d --build`. After that, access the URL http://localhost:8080.
