@@ -30,7 +30,7 @@ The first command it's used to persist the data when the container is gone. The 
 The NodeJs [Dockerfile](https://docs.docker.com/engine/reference/builder/) contains the following instructions:
 - Copy the current directory to the container
 - Wait the MySQL container to be up and running
-- Install the NodeJs app dependecies
+- Install the NodeJs app dependencies
 
 ## ⚙️ Setting up [Nginx](https://www.nginx.com/)
 In the [Dockerfile](https://docs.docker.com/engine/reference/builder/) for Nginx the default.conf file is removed and then replaced by a new config file. This config file has specific instructions to call the NodeJS app on port 3000. Pay attention to this line:
@@ -43,4 +43,4 @@ proxy_pass http://app:3000
 In this line Nginx will look for the container called `app` on port 3000.
 
 ## ▶️ Running instructions
-Clone this repository and then run `docker-compose up -d --build`. After that access the URL http://localhost:8080.
+Clone this repository and then run `docker-compose up -d --build`. After that, access the URL http://localhost:8080.
