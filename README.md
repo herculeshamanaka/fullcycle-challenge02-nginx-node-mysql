@@ -32,7 +32,7 @@ The NodeJs [Dockerfile](https://docs.docker.com/engine/reference/builder/) conta
 - Wait the MySQL container to be up and running
 - Install the NodeJs app dependencies
 
-## ⚙️ Setting up [Nginx](https://www.nginx.com/)
+## <img src="https://user-images.githubusercontent.com/33010639/110218079-67681280-7e96-11eb-8a9d-b29a65617d13.png" width="50" heigth="50" /> Setting up [Nginx](https://www.nginx.com/)
 In the [Dockerfile](https://docs.docker.com/engine/reference/builder/) for Nginx the default.conf file is removed and then replaced by a new config file. This config file has specific instructions to call the NodeJS app on port 3000. Pay attention to this line:
 ```
 ...
