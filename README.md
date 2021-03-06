@@ -3,7 +3,7 @@ Repo containing the challenge 02 from FullCycle 2.0 course (Code Education by Sc
 
 ## 🎯 The Challenge
 The challenge consists of:
-- Create a NodeJS app which insert a name on a MySQL table called "people" everything it's accessed. Then display an h1 tag with "Full Cyle Rocks!" all the names already inserted.
+- Create a NodeJS app which insert a name on a MySQL table called "people" everytime it's accessed. Then display an h1 tag with "Full Cyle Rocks!" and all the names already inserted.
 - Use [nginx](https://www.nginx.com/) as a proxy to call the NodeJS app. The URL http://localhost:8080 must call the NodeJS app.
 - Create a docker-compose file to make it all happen.
 
