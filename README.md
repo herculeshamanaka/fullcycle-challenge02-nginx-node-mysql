@@ -43,4 +43,4 @@ proxy_pass http://app:3000
 In this line Nginx will look for the container called `app` on port 3000.
 
 ## Running instructions ✅
-Clone this repository and then run `docker-compose up -d --build`. After that, access the URL http://localhost:8080.
+Clone this repository and then run `docker-compose up -d`. After that, access the URL http://localhost:8080.
