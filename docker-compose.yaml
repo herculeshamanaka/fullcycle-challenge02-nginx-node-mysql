@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+
+  nginx:
+    container_name: nginx
+    build:
+      context: ./nginx
+    image: nginx:1.15.0-alpine
+    networks:
+      - challenge02
+    ports:
+      - "8080:80"
+    depends_on:
+      - app
+
+  app:
+    container_name: app
+    restart: always
+    build:
+      context: ./nodejs
+    image: node:15
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 30s docker-entrypoint.sh
+    tty: true
+    networks:
+      - challenge02
+    depends_on:
+      - db
+    command: npm start
+
+  db:
+    container_name: db
+    restart: always
+    image: mysql:5.7    
+    tty: true
+    volumes:
+      - ./mysql/database:/var/lib/mysql
+      - ./mysql/init_file:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_DATABASE=challenge02db
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=root
+    networks:
+      - challenge02
+
+networks:
+  challenge02:
+    name: challenge02
+    driver: bridge
