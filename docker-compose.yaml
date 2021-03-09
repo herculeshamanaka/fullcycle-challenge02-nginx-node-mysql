@@ -45,5 +45,4 @@ services:
 
 networks:
   challenge02:
-    name: challenge02
     driver: bridge
